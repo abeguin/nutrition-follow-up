@@ -1,8 +1,10 @@
 import matplotlib.pyplot as pp
 import pandas as pd
+import os
 
+git_root = os.getenv('GIT_ROOT')
 
-def roundTo5(x):
+def round_to_5(x):
     return 5 * round(x / 5)
 
 
@@ -35,15 +37,15 @@ CAL_PER_PROTEIN_GRAM = 4
 CAL_PER_LIPID_GRAM = 9
 CAL_PER_CARBOHYDRATE_GRAM = 4
 
-DAILY_MAINTENANCE = roundTo5((370 + 21.6 * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT) * PARAM_ACTIVITY_FACTOR)
-DAILY_GOAL = roundTo5((1 - PARAM_DEFICIT) * DAILY_MAINTENANCE)
-DAILY_DEFICIT = roundTo5(DAILY_MAINTENANCE - DAILY_GOAL)
-DAILY_PROTEIN = roundTo5(PARAM_PROTEIN_FACTOR * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT)
-DAILY_LIPID = roundTo5(PARAM_LIPID_FACTOR * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT)
-DAILY_CARBOHYDRATE = roundTo5((DAILY_GOAL - (DAILY_LIPID * CAL_PER_LIPID_GRAM) - (
+DAILY_MAINTENANCE = round_to_5((370 + 21.6 * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT) * PARAM_ACTIVITY_FACTOR)
+DAILY_GOAL = round_to_5((1 - PARAM_DEFICIT) * DAILY_MAINTENANCE)
+DAILY_DEFICIT = round_to_5(DAILY_MAINTENANCE - DAILY_GOAL)
+DAILY_PROTEIN = round_to_5(PARAM_PROTEIN_FACTOR * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT)
+DAILY_LIPID = round_to_5(PARAM_LIPID_FACTOR * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT)
+DAILY_CARBOHYDRATE = round_to_5((DAILY_GOAL - (DAILY_LIPID * CAL_PER_LIPID_GRAM) - (
         DAILY_PROTEIN * CAL_PER_PROTEIN_GRAM)) / CAL_PER_CARBOHYDRATE_GRAM)
 
-follow_up = pd.read_csv('data/follow_up.csv')
+follow_up = pd.read_csv(git_root + 'scripts/data/follow_up.csv')
 
 # Calorie mean
 data_mean = follow_up.groupby('Week').mean()
@@ -63,7 +65,7 @@ ax = df_cal_mean.plot(x='Week', y=['Calorie in', 'Calorie out'], kind='bar', col
                       figsize=[20, 10])
 df_cal_mean.plot(x='Week', y=['Adjusted goal', 'Estimated goal'], kind='line', ax=ax, color=['red', 'gold'])
 pp.title('Calorie mean')
-pp.savefig('output/cal-mean.png', bbox_inches="tight", dpi=100)
+pp.savefig(git_root + '/output/cal-mean.png', bbox_inches="tight", dpi=100)
 pp.show()
 
 # Calorie sum
@@ -92,7 +94,7 @@ ax = df_cal_sum.plot(x='Week', y=['Calorie in', 'Calorie out'], kind='bar', colo
                      figsize=[20, 10])
 df_cal_sum.plot(x='Week', y=['Adjusted goal', 'Estimated goal'], kind='line', ax=ax, color=['red', 'gold'])
 pp.title('Calorie sum')
-pp.savefig('output/cal-sum.png', bbox_inches="tight", dpi=100)
+pp.savefig(git_root + '/output/cal-sum.png', bbox_inches="tight", dpi=100)
 pp.show()
 
 # Weight
@@ -106,7 +108,7 @@ df_weight = pd.DataFrame({
 
 df_weight.plot(x='Week', y=['Weight'], kind='line', color=['royalblue'], figsize=[20, 10])
 pp.title('Weight')
-pp.savefig('output/weight.png', bbox_inches="tight", dpi=100)
+pp.savefig(git_root + '/output/weight.png', bbox_inches="tight", dpi=100)
 pp.show()
 
 # Macro mean
@@ -129,7 +131,7 @@ ax = df_macro_mean.plot(x='Week', y=['Protein', 'Lipid', 'Carbohydrate'], kind='
 df_macro_mean.plot(x='Week', y=['Protein goal', 'Lipid goal', 'Carbohydrate goal'], kind='line', ax=ax,
                    color=['grey', 'royalblue', 'gold'])
 pp.title('Macro mean')
-pp.savefig('output/macro-mean.png', bbox_inches="tight", dpi=100)
+pp.savefig(git_root + '/output/macro-mean.png', bbox_inches="tight", dpi=100)
 pp.show()
 
 # Macro sum
@@ -152,5 +154,5 @@ ax = df_macro_sum.plot(x='Week', y=['Protein', 'Lipid', 'Carbohydrate'], kind='b
 df_macro_sum.plot(x='Week', y=['Protein goal', 'Lipid goal', 'Carbohydrate goal'], kind='line', ax=ax,
                   color=['grey', 'royalblue', 'gold'])
 pp.title('Macro sum')
-pp.savefig('output/macro-sum.png', bbox_inches="tight", dpi=100)
+pp.savefig(git_root + '/output/macro-sum.png', bbox_inches="tight", dpi=100)
 pp.show()
