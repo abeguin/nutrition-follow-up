@@ -1,5 +1,6 @@
 import matplotlib.pyplot as pp
 import pandas as pd
+import datetime
 
 
 def round_to_5(x):
@@ -9,7 +10,7 @@ def round_to_5(x):
 PARAM_WEIGHT = 66
 
 # Estimated body fat percentage
-PARAM_BODY_FAT = 0.17
+PARAM_BODY_FAT = 0.2
 
 # x1.1 : peu ou pas d’exercice/sport (E/S)
 # x1.2 : E/S 1-2 fois par semaine
@@ -21,7 +22,7 @@ PARAM_ACTIVITY_FACTOR = 1.35
 # Deficit percentage
 # Recommended between 10 and 25%
 # The higher it is, the higher should the protein factor be
-PARAM_DEFICIT = 0.2
+PARAM_DEFICIT = 0.25
 
 # Between 1.5 and 2.3
 # the leaner you are and the higher the deficit is
@@ -63,41 +64,24 @@ df_cal_mean = pd.DataFrame({
     'Estimated goal': [DAILY_GOAL] * len(data_mean.index)
 })
 
-ax = df_cal_mean.plot(x='Week', y=['Calorie in', 'Calorie out'], kind='bar', color=['grey', 'royalblue'],
+ax = df_cal_mean.plot(x='Week',
+                      y=['Calorie in', 'Calorie out'],
+                      kind='bar',
+                      colormap='Blues',
                       figsize=[20, 10])
-df_cal_mean.plot(x='Week', y=['Adjusted goal', 'Estimated goal'], kind='line', ax=ax, color=['red', 'gold'])
+
+df_cal_mean.plot(x='Week',
+                 y=['Adjusted goal', 'Estimated goal'],
+                 kind='line',
+                 ax=ax,
+                 colormap='Blues')
+
+pp.text(10, DAILY_GOAL, DAILY_GOAL)
+
 pp.title('Calorie mean')
+
 pp.savefig('../viz/assets/cal-mean.png', bbox_inches="tight", dpi=100)
 pp.show()
-
-# Calorie sum
-# A_WEEK = 7
-# WEEKLY_MAINTENANCE = DAILY_MAINTENANCE * A_WEEK
-# WEEKLY_GOAL = DAILY_GOAL * A_WEEK
-# WEEKLY_DEFICIT = DAILY_DEFICIT * A_WEEK
-# WEEKLY_PROTEIN = DAILY_PROTEIN * A_WEEK
-# WEEKLY_LIPID = DAILY_LIPID * A_WEEK
-# WEEKLY_CARBOHYDRATE = DAILY_CARBOHYDRATE * A_WEEK
-#
-# data_sum = follow_up.groupby('Week').sum()
-# calories_in = data_sum['Calorie in'].astype(int)
-# calories_out = data_sum['Calorie out'].astype(int)
-# adjusted_goal = calories_out.sub(WEEKLY_DEFICIT)
-#
-# df_cal_sum = pd.DataFrame({
-#     'Week': data_sum.index,
-#     'Calorie in': calories_in,
-#     'Calorie out': calories_out,
-#     'Adjusted goal': adjusted_goal,
-#     'Estimated goal': [WEEKLY_GOAL] * len(data_sum.index)
-# })
-#
-# ax = df_cal_sum.plot(x='Week', y=['Calorie in', 'Calorie out'], kind='bar', color=['grey', 'royalblue'],
-#                      figsize=[20, 10])
-# df_cal_sum.plot(x='Week', y=['Adjusted goal', 'Estimated goal'], kind='line', ax=ax, color=['red', 'gold'])
-# pp.title('Calorie sum')
-# pp.savefig('../viz/assets/cal-sum.png', bbox_inches="tight", dpi=100)
-# pp.show()
 
 # Weight
 data_weight = follow_up.groupby('Week').mean()
@@ -108,8 +92,17 @@ df_weight = pd.DataFrame({
     'Weight': weight,
 })
 
-df_weight.plot(x='Week', y=['Weight'], kind='line', color=['royalblue'], figsize=[20, 10])
+ax = df_weight.plot(x='Week',
+                    y=['Weight'],
+                    kind='line',
+                    color=['royalblue'],
+                    figsize=[20, 10])
 pp.title('Weight')
+
+# Add bar labels
+for container in ax.containers:
+    ax.bar_label(container)
+
 pp.savefig('../viz/assets/weight.png', bbox_inches="tight", dpi=100)
 pp.show()
 
@@ -129,33 +122,55 @@ df_macro_mean = pd.DataFrame({
     'Lipid min': [DAILY_MIN_LIPID] * len(data_mean.index)
 })
 
-ax = df_macro_mean.plot(x='Week', y=['Protein', 'Lipid', 'Carbohydrate'], kind='bar',
-                        color=['grey', 'royalblue', 'gold'], figsize=[20, 10])
-df_macro_mean.plot(x='Week', y=['Protein goal', 'Lipid goal', 'Carbohydrate goal', 'Lipid min'], kind='line', ax=ax,
-                   color=['grey', 'royalblue', 'gold', 'royalblue'])
+ax = df_macro_mean.plot(x='Week',
+                        y=['Protein', 'Lipid', 'Carbohydrate'],
+                        kind='bar',
+                        colormap='Blues',
+                        figsize=[20, 10])
+df_macro_mean.plot(x='Week',
+                   y=['Protein goal', 'Lipid goal', 'Carbohydrate goal', 'Lipid min'],
+                   kind='line', ax=ax,
+                   colormap='Blues')
 pp.title('Macro mean')
+
+# Add bar labels
+for container in ax.containers:
+    ax.bar_label(container)
+
 pp.savefig('../viz/assets/macro-mean.png', bbox_inches="tight", dpi=100)
 pp.show()
 
-# Macro sum
-# protein_sum = data_sum['Protein'].astype(int)
-# lipid_sum = data_sum['Lipid'].astype(int)
-# carb_sum = data_sum['Carbohydrate'].astype(int)
-#
-# df_macro_sum = pd.DataFrame({
-#     'Week': data_sum.index,
-#     'Protein': protein_sum,
-#     'Lipid': lipid_sum,
-#     'Carbohydrate': carb_sum,
-#     'Protein goal': [WEEKLY_PROTEIN] * len(data_sum.index),
-#     'Lipid goal': [WEEKLY_LIPID] * len(data_sum.index),
-#     'Carbohydrate goal': [WEEKLY_CARBOHYDRATE] * len(data_sum.index)
-# })
-#
-# ax = df_macro_sum.plot(x='Week', y=['Protein', 'Lipid', 'Carbohydrate'], kind='bar',
-#                        color=['grey', 'royalblue', 'gold'], figsize=[20, 10])
-# df_macro_sum.plot(x='Week', y=['Protein goal', 'Lipid goal', 'Carbohydrate goal'], kind='line', ax=ax,
-#                   color=['grey', 'royalblue', 'gold'])
-# pp.title('Macro sum')
-# pp.savefig('../viz/assets/macro-sum.png', bbox_inches="tight", dpi=100)
-# pp.show()
+df_weight_history = pd.DataFrame({
+    'Date': [
+        datetime.date(2019, 9, 1),
+        datetime.date(2020, 3, 1),
+        datetime.date(2020, 12, 1),
+        datetime.date(2021, 12, 1),
+    ],
+    'Weight': [
+        62.0,
+        63.5,
+        67.0,
+        67.0
+    ]
+})
+
+df_weight_history.plot(x = 'Date', y= 'Weight', kind='scatter', figsize=[20,10])
+
+pp.title('Weight history')
+
+pp.savefig('../viz/assets/weight-history.png', bbox_inches="tight", dpi=100)
+
+def plot_line(index, serie, serie_min, serie_max, title, filename):
+    pp.figure(figsize=[20, 10])
+    pp.plot(index, serie)
+    pp.fill_between(index, serie_min, serie_max, alpha=0.2)
+    pp.title(title)
+    pp.savefig('../viz/assets/' + filename + '.png', bbox_inches="tight", dpi=100)
+    pp.show()
+
+
+plot_line(df_cal_mean['Week'], df_cal_mean['Calorie in'], df_cal_mean['Estimated goal'], df_cal_mean['Adjusted goal'],
+          'Calories in', 'cal-in')
+plot_line(df_cal_mean['Week'], df_cal_mean['Calorie out'], df_cal_mean['Estimated goal'], df_cal_mean['Adjusted goal'],
+          'Calories in', 'cal-in')
