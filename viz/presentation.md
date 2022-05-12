@@ -44,6 +44,12 @@ April 2022 - 3 month feedback
 
 # Agenda
 
+- À quoi ça sert ?
+- Le principe
+- Les applications courantes
+- Pourquoi j'ai fait ça ?
+- Mes objectifs
+
 - Why I did that ?
 - Framework principles
 - My initial parameters
@@ -54,74 +60,66 @@ April 2022 - 3 month feedback
 
 ---
 
-# Why I did that
+# Le principe
 
-|        |         |         |         |         |
-|--------|---------|---------|---------|---------|
-| Date   | 2019-09 | 2020-03 | 2021-12 | 2021-12 |
-| Weight | 62.0 kg | 63.5kg  | 67 kg   | 67 kg   |
+Suivre
 
-Beyond the weight 
-
-- I wasn't happy with what the mirror was showing me
-- I was feeling heavy on boulders
-- Had to choose between loosing some weight or buy new clothes
-- I knew that, the more I wait, the harder it will be
+- Les calories que l'on mange
+- La répartition des macronutriments
+  - Protéines
+  - Lipides
+  - Glucides
 
 ---
-# Framework principles
+# Les applications courantes
 
-The main principles
+Beaucoup utilisé dans le monde de la préparation physique
 
-1. No weight loss without calorie deficit (nor gain without calorie surplus)
-2. We usually talk about weight loss, when we mean fat loss
-   1. Loosing weight != loosing fat
-   2. Loosing weight = loosing muscle + water + fat
-3. The goal is to optimize the fat loss, the best way to do so is to minimize the muscle loss by
-   1. Providing enough protein
-   2. Using muscles, if possible in a way to stimulate muscle growth
-   
+- Fitness
+- Acteurs
+- Autres sportifs de haut niveau
+
+Utilisé généralement pour
+- Prise de masse
+- Sèche
+
+--- 
+
+# Pourquoi j'ai fait ça ?
+
+Point de départ
+
+- Pris du poids entre septembre 2019 et décembre 2020 (+5 kg)
+- Pas réussi à perdre du poids en 2021
+
+Motivations
+
+- Constat d'échec de mes tentatives non structurées
+- Pas envie de faire un "régime"
+- Envie de comprendre un peu mieux mes habitudes alimentaires
+- Perdre quelques kilos pour
+  - Retrouver mes sensations sur un mur d'escalade
+  - Ne pas changer de garde robe
+  - Me sentir mieux dans mon corps
+  
 ---
 
-# My initial parameters
+# Mes objectifs
 
-| Weight | Body fat | Activity factor | Deficit | Protein factor | Lipid factor |
-|--------|----------|-----------------|---------|----------------|--------------|
-| 66kg   | 20%      | 1.35            | 20%     | 2.3 g/kg       | 1.5 g/kg     |
+1. Objectif réduction de masse grasse 10% < X < 15%
+   - Estimée entre 15 et 20% => 5% de 67kg = 3.35kg
+   - Objectif autour de 62kg (3.35 + 1-2kg d'eau et de muscle)
+2. Me sentir mieux dans mon corps 
+   - À l'aise dans mes habits sans changer de garde robe
+   - Retrouver mes sensations au bloc
+3. Mieux comprendre mon alimentation
+4. Bonus: Abdos visibles
 
-Thoses factors are used to compute daily calories and macro goals
-
-| Maintenance  | Deficit     | Goal         | Protein  | Lipid   | Carbohydrate |
-|--------------|-------------|--------------|----------|---------|--------------|
-| 2095 calorie | 420 calorie | 1675 calorie | 125 g/kg | 80 g/kg | 115 g/kg     |
-
-<!--
-- Weight, measured
-- Body fat, measured or estimated
-- Activity factor, estimated
-  - 1.1: a few or no exercices
-  - 1.2: exercice 1-2 times a week
-  - 1.35: exercice 3-5 times a week
-  - 1.45: exercice 6-7 times a week
-  - 1.6 - 1.8: exercice 6-7 times a week + physical work
-- Deficit, should be between 10% and 25%
-  - This higher it is, the higher should the protein factor be
-  - The higher, the harder
-- Protein factor
-   - Between 1.5 and 2.3
-- Lipid factor
-   - At least 0.7
-- Carbohydrate
-   - The rest
--->
 ---
-# Parameters from studies
 
-| What          | Calorie     |
-|---------------|-------------|
-| Protein       | 4 calorie/g |
-| Lipid         | 9 calorie/g |
-| Carbohydrates | 4 calorie/g |
+# Le calculateur
+
+Démo
 
 ---
 
@@ -139,6 +137,6 @@ What I've changed
 
 ---
 
-# Results
+# Results (weight)
 
 ![image](assets/weight.png)

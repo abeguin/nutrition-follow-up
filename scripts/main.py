@@ -7,6 +7,73 @@ def round_to_5(x):
     return 5 * round(x / 5)
 
 
+PARAMS = {
+    # x1.1 : peu ou pas d’exercice/sport (E/S)
+    # x1.2 : E/S 1-2 fois par semaine
+    # x1.35 : E/S 3-5 fois par semaine
+    # x1.45 : E/S 6-7 fois par semaine
+    # x1.6-1.8 : E/S 6-7 fois par semaine & travail physique
+    "activity": 1.35,
+    # Between 1.5 and 2.3
+    # the leaner you are and the higher the deficit is
+    # the higher this factor should be
+    "protein": 2.3,
+    # At least 0.7, to stay healthy
+    "lipid": 1.5
+}
+
+WEEKLY_PARAMS = {
+    "hard":  {
+        "weight": 66,
+        # Estimated body fat percentage
+        "body_fat": 0.2,
+        # Deficit percentage
+        # Recommended between 10 and 25%
+        # The higher it is, the higher should the protein factor be
+        "deficit": 0.25,
+    },
+    "medium":  {
+        "weight": 65.8,
+        "body_fat": 0.2,
+        "deficit": 0.20,
+    },
+    "easy":  {
+        "weight": 63,
+        "body_fat": 0.17,
+        "deficit": 0.15,
+    }
+}
+
+CAL_PER_PROTEIN_GRAM = 4
+CAL_PER_LIPID_GRAM = 9
+CAL_PER_CARBOHYDRATE_GRAM = 4
+PARAM_MIN_LIPID_FACTOR = 0.7
+
+GOALS = {}
+
+for difficulty_key, params in WEEKLY_PARAMS.items():
+    daily_maintenance = round_to_5((370 + 21.6 * (1 - params["body_fat"]) * params["weight"]) * PARAMS["activity"])
+    daily_goal = round_to_5((1 - params["deficit"]) * daily_maintenance)
+    daily_deficit = round_to_5(daily_maintenance - daily_goal)
+    daily_protein = round_to_5(PARAMS["protein"] * (1 - params["body_fat"]) * params["weight"])
+    daily_lipid = round_to_5(PARAMS["lipid"] * (1 - params["body_fat"]) * params["weight"])
+    daily_min_lipid = round_to_5(PARAM_MIN_LIPID_FACTOR * (1 - params["body_fat"]) * params["weight"])
+    daily_carbohydrate = round_to_5(
+        (daily_goal - (daily_lipid * CAL_PER_LIPID_GRAM) - (daily_protein * CAL_PER_PROTEIN_GRAM)) /
+        CAL_PER_CARBOHYDRATE_GRAM
+    )
+    GOALS[difficulty_key] = {
+        "daily_maintenance": daily_maintenance,
+        "daily_goal": daily_goal,
+        "daily_deficit": daily_deficit,
+        "daily_protein": daily_protein,
+        "daily_lipid": daily_lipid,
+        "daily_min_lipid": daily_min_lipid,
+        "daily_carbohydrate": daily_carbohydrate
+    }
+
+
+
 PARAM_WEIGHT = 66
 
 # Estimated body fat percentage
@@ -32,10 +99,6 @@ PARAM_PROTEIN_FACTOR = 2.3
 # At least 0.7, to stay healthy
 PARAM_LIPID_FACTOR = 1.5
 PARAM_MIN_LIPID_FACTOR = 0.7
-
-CAL_PER_PROTEIN_GRAM = 4
-CAL_PER_LIPID_GRAM = 9
-CAL_PER_CARBOHYDRATE_GRAM = 4
 
 DAILY_MAINTENANCE = round_to_5((370 + 21.6 * (1 - PARAM_BODY_FAT) * PARAM_WEIGHT) * PARAM_ACTIVITY_FACTOR)
 DAILY_GOAL = round_to_5((1 - PARAM_DEFICIT) * DAILY_MAINTENANCE)
@@ -67,14 +130,14 @@ df_cal_mean = pd.DataFrame({
 ax = df_cal_mean.plot(x='Week',
                       y=['Calorie in', 'Calorie out'],
                       kind='bar',
-                      colormap='Blues',
+                      color=['Blue', 'Gray'],
                       figsize=[20, 10])
 
 df_cal_mean.plot(x='Week',
                  y=['Adjusted goal', 'Estimated goal'],
                  kind='line',
                  ax=ax,
-                 colormap='Blues')
+                 color=['Red', 'Black'])
 
 pp.text(10, DAILY_GOAL, DAILY_GOAL)
 
@@ -95,7 +158,7 @@ df_weight = pd.DataFrame({
 ax = df_weight.plot(x='Week',
                     y=['Weight'],
                     kind='line',
-                    color=['royalblue'],
+                    color=['Blue'],
                     figsize=[20, 10])
 pp.title('Weight')
 
@@ -125,12 +188,12 @@ df_macro_mean = pd.DataFrame({
 ax = df_macro_mean.plot(x='Week',
                         y=['Protein', 'Lipid', 'Carbohydrate'],
                         kind='bar',
-                        colormap='Blues',
+                        color=['Blue', 'Gray', 'LightBlue'],
                         figsize=[20, 10])
 df_macro_mean.plot(x='Week',
-                   y=['Protein goal', 'Lipid goal', 'Carbohydrate goal', 'Lipid min'],
+                   y=['Protein goal', 'Lipid min'],
                    kind='line', ax=ax,
-                   colormap='Blues')
+                   color=['Blue', 'Gray'])
 pp.title('Macro mean')
 
 # Add bar labels
@@ -164,13 +227,16 @@ pp.savefig('../viz/assets/weight-history.png', bbox_inches="tight", dpi=100)
 def plot_line(index, serie, serie_min, serie_max, title, filename):
     pp.figure(figsize=[20, 10])
     pp.plot(index, serie)
-    pp.fill_between(index, serie_min, serie_max, alpha=0.2)
+    pp.fill_between(index, serie_min, serie_max, alpha=0.2, color='lightblue')
     pp.title(title)
     pp.savefig('../viz/assets/' + filename + '.png', bbox_inches="tight", dpi=100)
     pp.show()
 
 
-plot_line(df_cal_mean['Week'], df_cal_mean['Calorie in'], df_cal_mean['Estimated goal'], df_cal_mean['Adjusted goal'],
+plot_line(df_cal_mean['Week'],
+          df_cal_mean['Calorie in'],
+          df_cal_mean['Estimated goal'],
+          df_cal_mean['Adjusted goal'],
           'Calories in', 'cal-in')
-plot_line(df_cal_mean['Week'], df_cal_mean['Calorie out'], df_cal_mean['Estimated goal'], df_cal_mean['Adjusted goal'],
-          'Calories in', 'cal-in')
+#plot_line(df_cal_mean['Week'], df_cal_mean['Calorie out'], df_cal_mean['Estimated goal'], df_cal_mean['Adjusted goal'],
+#          'Calories out', 'cal-out')
