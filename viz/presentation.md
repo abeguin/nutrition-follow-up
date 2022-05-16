@@ -50,14 +50,6 @@ April 2022 - 3 month feedback
 - Pourquoi j'ai fait ça ?
 - Mes objectifs
 
-- Why I did that ?
-- Framework principles
-- My initial parameters
-- The first adjustments
-- Results
-- What I have learned
-- What's next
-
 ---
 
 # Le principe
@@ -71,6 +63,7 @@ Suivre
   - Glucides
 
 ---
+
 # Les applications courantes
 
 Beaucoup utilisé dans le monde de la préparation physique
@@ -85,58 +78,174 @@ Utilisé généralement pour
 
 --- 
 
-# Pourquoi j'ai fait ça ?
+# Les choses à prendre en compte en plus
 
-Point de départ
+- Satiété
+  - Max de volume pour un minimum de calories
+- Plaisir
+  - Manger des choses qu'on aime au quotidien
+- Repos
+  - La majorité du déstockage des graisses et de la construction de la masse musculaire se font pendant qu'on dort
+- L'alcool 
+- Type d'activité sportive (en fonction de l'objectif)
 
-- Pris du poids entre septembre 2019 et décembre 2020 (+5 kg)
+--- 
+
+<style scoped>
+    p {
+        margin: 0 auto;
+    }
+    ul {
+       font-size: 0.8rem; 
+    }
+</style>
+# Pourquoi j'ai fait ça - constat
+
+- Prise de poids entre septembre 2019 et décembre 2020 (+5 kg)
 - Pas réussi à perdre du poids en 2021
 
-Motivations
+![h:450](assets/weight-history.png)
 
-- Constat d'échec de mes tentatives non structurées
-- Pas envie de faire un "régime"
-- Envie de comprendre un peu mieux mes habitudes alimentaires
-- Perdre quelques kilos pour
-  - Retrouver mes sensations sur un mur d'escalade
-  - Ne pas changer de garde robe
+---
+
+<style scoped>
+    ul {
+       font-size: 0.8rem; 
+    }
+</style>
+# Pourquoi j'ai fait ça
+
+- Constats
+  - Le sport ne suffit pas
+  - Pas envie de faire un "régime"
+
+- Objectifs
+  - Réduction de masse grasse 10% < X < 15%
+      - Estimée entre 15 et 20% => 5% de 67kg = 3.35kg
+      - Objectif autour de 62kg (3.35 + 1-2kg d'eau et de muscle)
   - Me sentir mieux dans mon corps
-  
----
-
-# Mes objectifs
-
-1. Objectif réduction de masse grasse 10% < X < 15%
-   - Estimée entre 15 et 20% => 5% de 67kg = 3.35kg
-   - Objectif autour de 62kg (3.35 + 1-2kg d'eau et de muscle)
-2. Me sentir mieux dans mon corps 
-   - À l'aise dans mes habits sans changer de garde robe
-   - Retrouver mes sensations au bloc
-3. Mieux comprendre mon alimentation
-4. Bonus: Abdos visibles
+      - À l'aise dans mes habits sans changer de garde-robe
+      - Retrouver mes sensations au bloc
+  - Mieux comprendre mon alimentation
+  - Bonus: Abdos visibles
 
 ---
 
-# Le calculateur
+<style scoped>
+    p {
+        font-size: 4rem;
+        text-align: center;
+    }
+</style>
 
-Démo
-
----
-
-# The first adjustments
-
-After a week, I felt frustrated, tired and starving all day and night. 
-Could not concentrate nor train as I wanted.
-
-What I've changed
-
-- Drink more water (3-4l a day)
-- Adjust goal with a lower deficit
-- Use circularity calorie
-- Double up vegetables to fill my stomach
+**Le calculateur**
 
 ---
 
-# Results (weight)
+# Les premiers ajustements
 
-![image](assets/weight.png)
+Deux premières semaines difficiles
+
+- Difficulté de concentration
+- Faim (tout le temps !)
+- Fatigue / Manque d'énergie
+
+Ce que j'ai changé
+
+- Dormir plus
+- Boire plus d'eau
+- Doubler le volume de légumes
+- Calories "circulaire"
+- Ajustement du déficit calorique
+
+---
+
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Cut phase - Calories in/out
+
+![h:500](assets/cal-in-out-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Cut phase - Calories in
+
+![h:500](assets/cal-in-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Cut phase - Macro
+
+![h:500](assets/macro-mean-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Cut phase - Weight
+
+![h:500](assets/weight-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Stabilization phase - Calories in/out
+
+![h:500](assets/cal-in-out-stabilization.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Stabilization phase - Calories in
+
+![h:500](assets/cal-in-stabilization.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Stabilization phase - Macro
+
+![h:500](assets/macro-mean-stabilization.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+# Stabilization phase - Weight
+
+![h:500](assets/weight-stabilization.png)
+
+---
+
+# Ce que je retiens
+
+1. Energie != Satiété
+2. Fromage => bombes caloriques
+3. Alcool
+   1. Calories vide
+4. Protéines
+
