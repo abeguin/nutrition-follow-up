@@ -55,7 +55,7 @@ WEEKLY_PARAMS = {
         "body_fat": 0.17,
         "deficit": 0.1,
         "start_week": 13,
-        "end_week": 17,
+        "end_week": 19,
     }
 }
 
