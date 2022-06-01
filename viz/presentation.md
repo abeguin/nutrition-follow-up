@@ -1,16 +1,8 @@
 ---
-marp: true
-theme: default
-title: Nutrition follow up
-description: ABE nutrition goals and follow up for 2022
-author: Arnaud Béguin
-keywords: Nutrition, Health, MyFitnessPal
-url: https://github.com/abeguin/nutrition-follow-up.git
-color: #B62D42
-colorSecondary: #000
-backgroundColor: #fff
-paginate: true
-footer: "Reproduction interdite sans \n autorisation écrite préalable"
+marp: true theme: default title: Nutrition follow up description: ABE nutrition goals and follow up for 2022 author:
+Arnaud Béguin keywords: Nutrition, Health, MyFitnessPal url: https://github.com/abeguin/nutrition-follow-up.git
+color: #B62D42 colorSecondary: #000 backgroundColor: #fff paginate: true footer: "Reproduction interdite sans \n
+autorisation écrite préalable"
 ---
 
 <style>
@@ -26,119 +18,402 @@ footer: "Reproduction interdite sans \n autorisation écrite préalable"
         position: absolute;
         top: 1rem;
     }
+    h2 {
+      position: absolute;
+      top: 3rem;
+      margin: 0;
+    }
     table {
         margin: 1rem auto;
     }
-
-
 </style>
 
 <style scoped>
     section::after { color: transparent; }
 </style>
-# Nutrition follow up
 
-April 2022 - 3 month feedback
+# J'ai compté mes macros
+
+Retour d'expérience
 
 ---
 
 # Agenda
 
-- Why I did that ?
-- Framework principles
-- My initial parameters
-- The first adjustments
-- Results
-- What I have learned
-- What's next
+- Pourquoi j'ai fait ça
+- Mes objectifs
+- Le cadre
+- Les applications courantes
+- Hors cadre
+- Poser le cadre
+- REX
+    - Cut phase (Janvier - Avril)
+    - Stabilization phase (Avril - Mai)
 
 ---
 
-# Why I did that
+<style scoped>
+    p {
+        margin: 0 auto;
+    }
+    ul {
+       font-size: 0.7rem; 
+    }
+</style>
 
-|        |         |         |         |         |
-|--------|---------|---------|---------|---------|
-| Date   | 2019-09 | 2020-03 | 2021-12 | 2021-12 |
-| Weight | 62.0 kg | 63.5kg  | 67 kg   | 67 kg   |
+# Pourquoi j'ai fait ça
 
-Beyond the weight 
+## Constat
 
-- I wasn't happy with what the mirror was showing me
-- I was feeling heavy on boulders
-- Had to choose between loosing some weight or buy new clothes
-- I knew that, the more I wait, the harder it will be
+- Prise de poids entre septembre 2019 et décembre 2020 (+5 kg)
+- Pas réussi à perdre du poids en 2021
+  - Le sport ne suffit pas
+  - Pas envie de faire un "régime"
 
----
-# Framework principles
-
-The main principles
-
-1. No weight loss without calorie deficit (nor gain without calorie surplus)
-2. We usually talk about weight loss, when we mean fat loss
-   1. Loosing weight != loosing fat
-   2. Loosing weight = loosing muscle + water + fat
-3. The goal is to optimize the fat loss, the best way to do so is to minimize the muscle loss by
-   1. Providing enough protein
-   2. Using muscles, if possible in a way to stimulate muscle growth
-   
----
-
-# My initial parameters
-
-| Weight | Body fat | Activity factor | Deficit | Protein factor | Lipid factor |
-|--------|----------|-----------------|---------|----------------|--------------|
-| 66kg   | 20%      | 1.35            | 20%     | 2.3 g/kg       | 1.5 g/kg     |
-
-Thoses factors are used to compute daily calories and macro goals
-
-| Maintenance  | Deficit     | Goal         | Protein  | Lipid   | Carbohydrate |
-|--------------|-------------|--------------|----------|---------|--------------|
-| 2095 calorie | 420 calorie | 1675 calorie | 125 g/kg | 80 g/kg | 115 g/kg     |
-
-<!--
-- Weight, measured
-- Body fat, measured or estimated
-- Activity factor, estimated
-  - 1.1: a few or no exercices
-  - 1.2: exercice 1-2 times a week
-  - 1.35: exercice 3-5 times a week
-  - 1.45: exercice 6-7 times a week
-  - 1.6 - 1.8: exercice 6-7 times a week + physical work
-- Deficit, should be between 10% and 25%
-  - This higher it is, the higher should the protein factor be
-  - The higher, the harder
-- Protein factor
-   - Between 1.5 and 2.3
-- Lipid factor
-   - At least 0.7
-- Carbohydrate
-   - The rest
--->
----
-# Parameters from studies
-
-| What          | Calorie     |
-|---------------|-------------|
-| Protein       | 4 calorie/g |
-| Lipid         | 9 calorie/g |
-| Carbohydrates | 4 calorie/g |
+![h:300](assets/weight-history.png)
 
 ---
 
-# The first adjustments
+<style scoped>
+    ul {
+       font-size: 0.8rem; 
+    }
+</style>
 
-After a week, I felt frustrated, tired and starving all day and night. 
-Could not concentrate nor train as I wanted.
+# Pourquoi j'ai fait ça
 
-What I've changed
+## Objectifs
 
-- Drink more water (3-4l a day)
-- Adjust goal with a lower deficit
-- Use circularity calorie
-- Double up vegetables to fill my stomach
+- Réduction de masse grasse 10% < X < 15%
+  - Estimée entre 15 et 20% => 5% de 67kg = 3.35kg
+  - Objectif autour de 62kg (3.35 + 1-2kg d'eau et de muscle)
+- Me sentir mieux dans mon corps
+  - À l'aise dans mes habits sans changer de garde-robe
+  - Retrouver mes sensations au bloc
+- Mieux comprendre mon alimentation
+  - Changements pérennes
+- Bonus: Abdos visibles
 
 ---
 
-# Results
+# Le principe
 
-![image](assets/weight.png)
+Suivre
+
+- Les calories que l'on mange
+- La répartition des macronutriments
+    - Protéines
+    - Lipides
+    - Glucides
+
+---
+
+# Les applications courantes
+
+Beaucoup utilisé dans le monde de la préparation physique
+
+- Fitness
+- Acteurs
+- Autres sportifs de haut niveau
+
+Utilisé généralement pour
+
+- Prise de masse
+- Sèche
+
+--- 
+
+# Hors cadre
+
+- Le choix des aliments
+- Satiété
+- Plaisir
+- Repos
+- Sport
+- L'alcool
+
+---
+
+<style scoped>
+    p {
+        font-size: 4rem;
+        text-align: center;
+    }
+</style>
+
+**Poser le cadre**
+
+---
+
+<style scoped>
+    p {
+        font-size: 4rem;
+        text-align: center;
+    }
+</style>
+
+**REX, cut phase**
+
+---
+
+<style scoped>
+  p {
+    margin: 0 auto;
+  }
+</style>
+
+# Cut phase
+
+## Goals
+
+![h:350](assets/cut_goals.png)
+
+---
+
+# Cut phase
+## Point de situation
+
+- Après 2 semaines
+  - Faim (tout le temps !)
+      - Frustration
+  - Fatigue / Manque d'énergie / Difficulté de concentration
+  - Efforts > Résultats
+
+- Après le covid
+  - Fatigue / Manque d'énergie / Difficulté de concentration
+---
+
+# Cut phase
+## Point de situation, les ajustements
+
+- Après 2 semaines
+  - Ajustement du déficit calorique
+  - Dormir plus
+  - Boire plus d'eau
+  - Doubler le volume de légumes
+  - Calories "circulaire" vs journalier
+
+- Après le covid
+  - Compléments alimentaires
+
+---
+
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Cut phase
+
+## Calories in/out vs goals
+
+![h:500](assets/cal-in-out-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Cut phase
+
+## Calories in vs goals
+
+![h:500](assets/cal-in-cut.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Cut phase
+
+## Macro
+
+![h:500](assets/macro-mean-cut.png)
+
+---
+
+<style scoped>
+  p {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+</style>
+
+# Cut phase
+
+## Results
+
+![h:350](assets/cut_goals.png)
+![h:350](assets/cut_results.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Cut phase
+## Weight
+
+![h:500](assets/weight-cut.png)
+
+---
+
+# Cut phase
+## Objectifs atteints ?
+
+- Objectif poids autour de 62kg
+  - Atteint
+- Objectif masse grasse 10% < x < 15%
+  - Non atteint
+- Me sentir mieux dans mon corps 
+  - Atteint
+- Mieux comprendre mon alimentation
+  - Atteint
+- Abdos visibles
+  - Non atteint
+
+---
+
+<style scoped>
+    p {
+        font-size: 4rem;
+        text-align: center;
+    }
+</style>
+
+**REX, stabilization phase**
+
+---
+<style scoped>
+  p {
+    margin: 0 auto;
+  }
+</style>
+
+# Stabilization phase
+
+## Goals
+
+![h:350](assets/stabilization_goals.png)
+
+---
+
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Stabilization phase
+
+## Calories in/out
+
+![h:500](assets/cal-in-out-stabilization.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Stabilization phase
+
+## Calories in
+
+![h:500](assets/cal-in-stabilization.png)
+
+---
+
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Stabilization phase
+
+## Macronutriments
+
+![h:500](assets/macro-mean-stabilization.png)
+
+---
+
+<style scoped>
+  p {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+</style>
+
+# Stabilization phase
+
+## Results
+
+![h:350](assets/stabilization_goals.png)
+![h:350](assets/stabilization_results.png)
+
+---
+<style scoped>
+  p {
+    margin: auto;
+  }
+</style>
+
+# Stabilization phase - Weight
+
+![h:500](assets/weight-stabilization.png)
+
+---
+
+# Ce que je retiens
+
+- Ça fonctionne !
+- Réévaluation de certains aliments
+  - Produit laitier
+  - Charcuterie
+  - Sauces (salade, mayo)
+  - Skyr (serré)
+- Energie != Satiété
+  - Volume != énergie
+- Alcool = cas particulier
+- Décalage temporel entre effort et impact
+  - Trust the process
+
+---
+
+# La suite
+
+1. Continuer de compter
+2. Ajustements de la phase de stabilisation
+
+---
+
+# Mes sources d'inspiration
+
+- Jeff Cavalier, https://www.youtube.com/c/athleanx
+- Eric Flag, https://www.youtube.com/c/EricFlag
+- Nassim Sahili, https://www.youtube.com/c/NassimSahili
+- Calisthenic movement, https://www.youtube.com/user/Calisthenicmovement
+- Juji Mufu, https://www.youtube.com/c/jujimufu
+- Eddie 'The Beast' Hall, https://www.youtube.com/user/TheUkstrongest
+- Elio Avila, https://www.youtube.com/c/ElioAvilaMu%C3%B1oz
+- Antoine Fombonne, https://www.youtube.com/c/ANTOINEFOMBONNE
+
+
