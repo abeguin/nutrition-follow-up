@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "marp:html": "npx marp presentation.md && npx marp presentation.md -o $GIT_ROOT/output/presentation.html",
-    "marp:pdf": "npx marp presentation.md --pdf && npx marp presentation.md -o $GIT_ROOT/output/presentation.pdf",
-    "marp:pptx": "npx marp presentation.md --pptx && npx marp presentation.md -o $GIT_ROOT/output/presentation.pptx",
+    "marp:html": "npx marp presentation.md && npx marp presentation.md -o $GIT_ROOT/output/presentation.html --allow-local-files",
+    "marp:pdf": "npx marp presentation.md --pdf && npx marp presentation.md -o $GIT_ROOT/output/presentation.pdf --allow-local-files",
+    "marp:pptx": "npx marp presentation.md --pptx && npx marp presentation.md -o $GIT_ROOT/output/presentation.pptx --allow-local-files",
     "marp:watch": "npx marp -w presentation.md",
     "marp:serve": "npx marp -s ."
   },
