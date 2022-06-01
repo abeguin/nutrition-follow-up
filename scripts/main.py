@@ -1,6 +1,8 @@
+import datetime
+
 import matplotlib.pyplot as pp
 import pandas as pd
-import datetime
+import dataframe_image as dfi
 
 
 def round_to_5(x):
@@ -77,15 +79,19 @@ for difficulty_key, params in WEEKLY_PARAMS.items():
         (daily_goal - (daily_lipid * CAL_PER_LIPID_GRAM) - (daily_protein * CAL_PER_PROTEIN_GRAM)) /
         CAL_PER_CARBOHYDRATE_GRAM
     )
+
     GOALS[difficulty_key] = {
-        "daily_maintenance": daily_maintenance,
-        "daily_goal": daily_goal,
-        "daily_deficit": daily_deficit,
-        "daily_protein": daily_protein,
-        "daily_lipid": daily_lipid,
-        "daily_min_lipid": daily_min_lipid,
-        "daily_carbohydrate": daily_carbohydrate
+        "Daily maintenance": daily_maintenance,
+        "Daily goal": daily_goal,
+        "Daily deficit": daily_deficit,
+        "Daily protein": daily_protein,
+        "Daily lipid": daily_lipid,
+        "Daily min lipid": daily_min_lipid,
+        "Daily carbohydrate": daily_carbohydrate
     }
+
+    table = pd.DataFrame.from_dict({difficulty_key: GOALS[difficulty_key]})
+    dfi.export(table, '../viz/assets/'+difficulty_key+'_goals.png')
 
 follow_up = pd.read_csv('data/follow_up.csv')
 
@@ -94,17 +100,36 @@ data_mean = follow_up.groupby('Week').mean()
 calories_in = data_mean['Calorie in'].astype(int)
 calories_out = data_mean['Calorie out'].astype(int)
 
+MEAN = {
+    "cut": {
+        "Estimated goal": 0,
+        "Adjusted goal": 0,
+        "Calorie in": 0,
+        "Calorie out": 0,
+        "Deficit vs Estimated goal": 0,
+        "Deficit vs Adjusted goal": 0,
+    },
+    "stabilization": {
+        "Estimated goal": 0,
+        "Adjusted goal": 0,
+        "Calorie in": 0,
+        "Calorie out": 0,
+        "Deficit vs Estimated goal": 0,
+        "Deficit vs Adjusted goal": 0,
+    }
+}
+
 for difficulty, params in WEEKLY_PARAMS.items():
     # Calories
     start_week = params["start_week"]
     end_week = params["end_week"]
-    daily_goal = GOALS[difficulty]["daily_goal"]
-    daily_deficit = GOALS[difficulty]["daily_deficit"]
-    daily_maintenance = GOALS[difficulty]["daily_maintenance"]
-    daily_protein = GOALS[difficulty]["daily_protein"]
-    daily_lipid = GOALS[difficulty]["daily_lipid"]
-    daily_carbohydrate = GOALS[difficulty]["daily_carbohydrate"]
-    daily_min_lipid = GOALS[difficulty]["daily_min_lipid"]
+    daily_goal = GOALS[difficulty]["Daily goal"]
+    daily_deficit = GOALS[difficulty]["Daily deficit"]
+    daily_maintenance = GOALS[difficulty]["Daily maintenance"]
+    daily_protein = GOALS[difficulty]["Daily protein"]
+    daily_lipid = GOALS[difficulty]["Daily lipid"]
+    daily_carbohydrate = GOALS[difficulty]["Daily carbohydrate"]
+    daily_min_lipid = GOALS[difficulty]["Daily min lipid"]
     adjusted_goal = calories_out.sub(daily_deficit)
 
     df_cal_mean = pd.DataFrame({
@@ -114,6 +139,16 @@ for difficulty, params in WEEKLY_PARAMS.items():
         'Adjusted goal': adjusted_goal[start_week:end_week],
         'Estimated goal': [daily_goal] * len(data_mean.index[start_week:end_week])
     })
+
+    MEAN[difficulty]['Estimated goal'] = int(df_cal_mean['Estimated goal'].mean())
+    MEAN[difficulty]['Adjusted goal'] = int(df_cal_mean['Adjusted goal'].mean())
+    MEAN[difficulty]['Calorie in'] = int(df_cal_mean['Calorie in'].mean())
+    MEAN[difficulty]['Calorie out'] = int(df_cal_mean['Calorie out'].mean())
+    deficit_vs_adjusted_goal = calories_out[start_week:end_week].sub(calories_in[start_week:end_week])
+    daily_goal_table = [daily_goal] * len(data_mean.index[start_week:end_week])
+    deficit_vs_estimated_goal = calories_in[start_week:end_week].sub(daily_goal_table).multiply(-1)
+    MEAN[difficulty]['Deficit vs Estimated goal'] = int(deficit_vs_estimated_goal.mean())
+    MEAN[difficulty]['Deficit vs Adjusted goal'] = int(deficit_vs_adjusted_goal.mean())
 
     ax = df_cal_mean.plot(x='Week',
                           y=['Calorie in', 'Calorie out'],
@@ -163,6 +198,13 @@ for difficulty, params in WEEKLY_PARAMS.items():
     lipid_mean = data_mean['Lipid'].astype(int)
     carb_mean = data_mean['Carbohydrate'].astype(int)
 
+    MEAN[difficulty]['Protein'] = int(protein_mean.mean())
+    MEAN[difficulty]['Lipid'] = int(lipid_mean.mean())
+    MEAN[difficulty]['Carb'] = int(carb_mean.mean())
+
+    table = pd.DataFrame.from_dict({difficulty: MEAN[difficulty]})
+    dfi.export(table, '../viz/assets/'+difficulty+'_results.png')
+
     df_macro_mean = pd.DataFrame({
         'Week': data_mean.index[start_week:end_week],
         'Protein': protein_mean[start_week:end_week],
@@ -184,8 +226,6 @@ for difficulty, params in WEEKLY_PARAMS.items():
                        y=['Protein goal', 'Lipid min'],
                        kind='line', ax=ax,
                        color=['Blue', 'Gray'])
-
-    # pp.title('Macro mean - ' + difficulty)
 
     # Add bar labels
     for container in ax.containers:
@@ -216,7 +256,7 @@ df_weight_history = pd.DataFrame({
     ]
 })
 
-df_weight_history.plot(x='Date', y='Weight', kind='scatter', figsize=[20, 10])
+df_weight_history.plot(x='Date', y='Weight', kind='line', figsize=[20, 10])
 
 # pp.title('Weight history')
 
